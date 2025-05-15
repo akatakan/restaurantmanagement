@@ -5,6 +5,7 @@ from backend.enums.masa_durumu_enum import MasaDurumu
 
 if TYPE_CHECKING:
     from .garson_model import Garson
+    from .siparis_model import Siparis
 
 
 class Masa(SQLModel, table=True):
@@ -12,5 +13,9 @@ class Masa(SQLModel, table=True):
     kapasite: int
     konum: str
     durum: MasaDurumu
+
     garson_id: UUID = Field(default=None, foreign_key="garson.id")
     garson: "Garson" = Relationship(back_populates="sorumluMasalar")
+
+    siparis_id: int | None = Field(default=None, foreign_key="siparis.siparisID")
+    Siparis: "Siparis" = Relationship(back_populates="masa")
