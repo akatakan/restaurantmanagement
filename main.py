@@ -17,7 +17,7 @@ engine = create_engine("sqlite:///restaurant.db")
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
 
-
+#Kaya are the king
 def create_models():
     with Session(engine) as session:
         garson1 = Garson(
