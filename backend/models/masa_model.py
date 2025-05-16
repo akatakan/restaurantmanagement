@@ -17,5 +17,4 @@ class Masa(SQLModel, table=True):
     garson_id: UUID = Field(default=None, foreign_key="garson.id")
     garson: "Garson" = Relationship(back_populates="sorumluMasalar")
 
-    siparis_id: int | None = Field(default=None, foreign_key="siparis.siparisID")
-    Siparis: "Siparis" = Relationship(back_populates="masa")
+    Siparis: "Siparis" = Relationship(back_populates="Masa")

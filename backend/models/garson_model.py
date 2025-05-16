@@ -10,5 +10,4 @@ if TYPE_CHECKING:
 class Garson(Personel, table=True):
     sorumluMasalar: List["Masa"] = Relationship(back_populates="garson")
 
-    siparisID: int | None = Field(default=None, foreign_key="siparis.siparisID")
-    Siparis: "Siparis" = Relationship(back_populates="garson")
+    Siparis: "Siparis" = Relationship(back_populates="Garson")

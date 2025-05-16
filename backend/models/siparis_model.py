@@ -3,11 +3,12 @@ from datetime import datetime
 from backend.enums.odeme_durumu_enum import OdemeDurumu
 from backend.enums.siparis_durumu_enum import SiparisDurumu
 from uuid import UUID
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from .garson_model import Garson
     from .masa_model import Masa
+    from .yemek_model import Yemek
 
 
 class Siparis(SQLModel, table=True):
@@ -18,7 +19,9 @@ class Siparis(SQLModel, table=True):
     siparisDurumu: SiparisDurumu
 
     garson_id: UUID = Field(default=None, foreign_key="garson.id")
-    Garson: "Garson" = Relationship(back_populates="siparis")
+    Garson: "Garson" = Relationship(back_populates="Siparis")
 
     masa_id: int | None = Field(default=None, foreign_key="masa.masa_numarasi")
-    Masa: "Masa" = Relationship(back_populates="siparis")
+    Masa: "Masa" = Relationship(back_populates="Siparis")
+
+    yemekler: List["Yemek"] = Relationship(back_populates="Siparis")
